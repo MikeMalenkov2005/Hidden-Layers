@@ -31,7 +31,7 @@ SDL_AppResult SDL_AppIterate(void *appstate)
 
 SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
 {
-  if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) || !NET_Init()) return SDL_APP_FAILURE;
+  if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) || !NET_Init() || !TTF_Init()) return SDL_APP_FAILURE;
 
   GameState *state = SDL_malloc(sizeof(*state));
   if (!state) return (SDL_SetError("Out of memory"), SDL_APP_FAILURE);
@@ -64,6 +64,7 @@ void SDL_AppQuit(void *appstate, SDL_AppResult result)
     if (state->window) SDL_DestroyWindow(state->window);
     SDL_free(state);
   }
+  TTF_Quit();
   NET_Quit();
   SDL_Quit();
 }
