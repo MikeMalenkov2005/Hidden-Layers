@@ -11,4 +11,5 @@
 - [ ] Item System
 - [ ] Cool Visuals
 - [ ] Multiplayer
-- [ ] Audio & [ ] Music
+- [ ] Sound Effects
+- [ ] Music
